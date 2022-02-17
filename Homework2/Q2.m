@@ -3,13 +3,13 @@ clc;
 book = imread('books.tif');
 bit = 8;
 
+%% Assignment
 Gamma = 0.5;
 gamma = gammaCorrection(book, bit, Gamma);
-
 contrast =  fullScaleContrast(book, bit);
-
 histogram = histogramEqual(book, bit);
 
+%% Figures
 figure('Name', 'Images');
 subplot(2,2,1);
 imshow(book);
@@ -19,11 +19,10 @@ imshow(gamma);
 title('Gamma-mapped Image');
 subplot(2,2,3);
 imshow(contrast);
-title('Full-scale Contast Stretched Image');
+title('Full-scale Contrast Stretched Image');
 subplot(2,2,4);
 imshow(histogram);
 title('Histogram Equalized Image');
-
 
 figure('Name', 'Histograms');
 subplot(2,2,1);
@@ -34,11 +33,12 @@ imhist(gamma);
 title('Gamma-mapped Image');
 subplot(2,2,3);
 imhist(contrast);
-title('Full-scale Contast Stretched Image');
+title('Full-scale Contrast Stretched Image');
 subplot(2,2,4);
 imhist(histogram);
 title('Histogram Equalized Image');
 
+%% Functions
 % Gamma Correction
 function output = gammaCorrection(input, bit, Gamma)
     input = double(input);

@@ -4,6 +4,7 @@ text = imread('text.tif');
 text = double(text);
 TextMag = process(text);
 
+%% Assign
 side = 21;
 sigma = 1;
 filter = gaussianFilter(side, sigma);
@@ -23,6 +24,7 @@ RecifilterMag = process(recifilter);
 deblurred = conv2(filtered, recifilter, 'same');
 DeblurredMag = process(deblurred);
 
+%% Figures
 figure('Name', 'Images');
 subplot(2, 3, 1);
 imshow(uint8(text));
@@ -57,6 +59,7 @@ subplot(2, 2, 4);
 mesh(RecifilterMag);
 title('Frequency Inverse Gaussian Filter Magnitude');
 
+%% Functions
 function output = gaussianFilter(side, sigma)
     output = ones(side, side);
     center = ceil(side / 2);

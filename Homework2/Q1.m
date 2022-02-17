@@ -3,6 +3,7 @@ clc;
 slope = imread('slope.tif');
 bit = 8;
 
+%% Assignment
 bitPlane1 = double(bitget(slope, 8));
 bitPlane2 = double(bitget(slope, 7));
 bitPlane3 = double(bitget(slope, 6));
@@ -21,6 +22,7 @@ version6 = bitshift(bitPlane1, 7) + bitshift(bitPlane2, 6) + bitshift(bitPlane3,
 version7 = bitshift(bitPlane1, 7) + bitshift(bitPlane2, 6) + bitshift(bitPlane3, 5) + bitshift(bitPlane4, 4) + bitshift(bitPlane5, 3) + bitshift(bitPlane6, 2) + bitshift(bitPlane7, 1);
 version8 = bitshift(bitPlane1, 7) + bitshift(bitPlane2, 6) + bitshift(bitPlane3, 5) + bitshift(bitPlane4, 4) + bitshift(bitPlane5, 3) + bitshift(bitPlane6, 2) + bitshift(bitPlane7, 1) + bitPlane8;
 
+%% Figures
 figure('Name', 'Upper 4 bitplanes');
 subplot(2, 2, 1);
 imshow(bitPlane1);
