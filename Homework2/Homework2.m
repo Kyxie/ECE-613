@@ -259,7 +259,7 @@ TextMag = process(text);
 side = 21;
 sigma = 1;
 filter = gaussianFilter(side, sigma);
-FilterMag = process(filter);
+FilterMag = fftshift(abs(fft2(filter)));
 filtered = conv2(text, filter, 'same');
 FilteredMag = process(filtered);
 
@@ -269,7 +269,7 @@ Filter = fft2(filter);
 reciFilter = 1 ./ Filter;
 % Reciprocal spatial filter
 recifilter = real(ifft2(reciFilter));
-RecifilterMag = process(recifilter);
+RecifilterMag = fftshift(abs(reciFilter));
 
 % Deblur
 deblurred = conv2(filtered, recifilter, 'same');
