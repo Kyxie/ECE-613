@@ -58,7 +58,7 @@ function upsampledBili = bili(upsampled, D, row, column)
     end
 end
 
-% Functions
+% Downsample
 function output = downsample(input, D)
     [row, column] = size(input);
     sizeOutput = floor((row-(D+1)/2)/D)+1;
@@ -74,6 +74,7 @@ function output = downsample(input, D)
     end
 end
 
+% Upsample
 function output = upsampleZero(input, D, oriRow, oriCol)
     output = zeros(oriRow, oriCol);
     i = (D + 1) / 2;
@@ -87,10 +88,12 @@ function output = upsampleZero(input, D, oriRow, oriCol)
     end
 end
 
+% Near kernel generator
 function output = nearGen(D)
     output = ones(1, D);
 end
 
+% Bili kernel generator
 function output = biliGen(D)
     output = ones(1, 2 * D - 1);
     for i = 1:2 * D - 1

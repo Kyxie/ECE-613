@@ -2,12 +2,11 @@ clear;
 clc;
 bridge = imread('bridge.tif');
 bridge = double(bridge);
-[side, rubbish] = size(bridge);
+[side, ~] = size(bridge);
 
 % fft
 Bridge = fft2(bridge);
 Bridge = fftshift(Bridge);
-Bridge = abs(Bridge);
 
 % Frequencies
 lowFreq = 1/8;
@@ -68,16 +67,16 @@ highFiltered = highFiltered / maxHighFiltered;
 
 figure('Name', 'Frequency Domain');
 subplot(2, 2, 1);
-imshow(origin);
+imshow(real(origin));
 title('Original Image');
 subplot(2, 2, 2);
-imshow(lowFiltered);
+imshow(real(lowFiltered));
 title('Low-pass Filtered Image');
 subplot(2, 2, 3);
-imshow(bandFiltered);
+imshow(real(bandFiltered));
 title('Band-pass Filtered Image');
 subplot(2, 2, 4);
-imshow(highFiltered);
+imshow(real(highFiltered));
 title('High-pass Filtered Image');
 
 function output = lowPass(side, frequency)
